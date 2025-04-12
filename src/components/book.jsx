@@ -1,34 +1,40 @@
-const Library = (props) => {
+const Library = ({ title, children }) => {
   return (
     <div className="library">
-      <h1 className="library-title">{props.title}</h1>
-      <div className="books">{props.children}</div>
+      <h1 className="library-title">{title}</h1>
+      <div className="books">{children}</div>
     </div>
   );
 };
 
-const Book = (props) => {
+const Book = ({name,img, author_span,author,description_span, description, genre_span, genre, action, collection }) => {
   return (
     <div className="book">
-      <h2 className="book-name">{props.name}</h2>
+      <h2 className="book-name">{name}</h2>
       <div className="book-img">
-        <img src={props.img} alt={props.name} />
+        <img src={img} alt={name} />
       </div>
       <div className="book-text">
         <h3 className="book-author">
-          <span>{props.author_span}</span> {props.author}{" "}
+          <span>{author_span}</span> {author}{" "}
         </h3>
         <p className="book-description">
-          <span>{props.description_span}</span>
-          {props.description}
+          <span>{description_span}</span>
+          {description}
         </p>
         <div className="genre">
-          
-            <span>{props.genre_span}</span>
-            {props.genre.map((g, index) => <div key={index}>{g}</div>)}
+          <span>{genre_span}</span>
+          {genre.map((g, index) => (
+            <div key={index}>{g}</div>
+          ))}
         </div>
       </div>
-      <button onClick={() => props.action(props.name, props.collection)} className="btn">books edition</button>
+      <button
+        onClick={() => action(name, collection)}
+        className="btn"
+      >
+        books edition
+      </button>
     </div>
   );
 };
